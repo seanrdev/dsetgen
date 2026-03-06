@@ -1,0 +1,8 @@
+LICENSE
+README.md
+pyproject.toml
+dsetgen.egg-info/PKG-INFO
+dsetgen.egg-info/SOURCES.txt
+dsetgen.egg-info/dependency_links.txt
+dsetgen.egg-info/requires.txt
+dsetgen.egg-info/top_level.txt
