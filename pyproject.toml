@@ -1,0 +1,75 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dsetgen"
+version = "0.1.0"
+description = "A modular, fault-tolerant pipeline for converting unstructured documents into LLM training datasets."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "GPL2.1"}
+
+dependencies = [
+    "httpx>=0.25",
+]
+
+[project.optional-dependencies]
+pdf = [
+    "pdfplumber>=0.10",
+]
+ocr = [
+    "pdfplumber>=0.10",
+    "pytesseract>=0.3",
+    "pdf2image>=1.16",
+]
+docx = [
+    "python-docx>=1.0",
+]
+html = [
+    "beautifulsoup4>=4.12",
+    "lxml>=4.9",
+]
+tokens = [
+    "tiktoken>=0.5",
+]
+streaming = [
+    "ijson>=3.2",
+]
+huggingface = [
+    "datasets>=2.14",
+    "pyarrow>=14.0",
+]
+logging = [
+    "structlog>=23.1",
+]
+all = [
+    "doc2dataset[pdf,ocr,docx,html,tokens,streaming,huggingface,logging]",
+]
+dev = [
+    "doc2dataset[all]",
+    "pytest>=7.4",
+    "pytest-asyncio>=0.21",
+    "ruff>=0.1",
+    "mypy>=1.6",
+]
+
+[tool.setuptools.packages.find]
+include = ["doc2dataset*"]
+
+[tool.ruff]
+line-length = 99
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
