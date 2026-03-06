@@ -2,7 +2,7 @@
 
 # 1. Install the system dependencies required to compile psycopg2 (for pgcli)
 sudo apt update
-sudo apt install -y libpq-dev python3-dev build-essential
+sudo apt install -y libpq-dev python3-dev build-essential tesseract-ocr
 
 # 2. Install the top-level applications using pipx
 pipx install "mitmproxy==12.2.1"
