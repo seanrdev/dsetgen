@@ -62,18 +62,47 @@ dsetgen/
 ```python
 from dsetgen.config import PipelineConfig
 from dsetgen.core.pipeline_controller import PipelineController
+from dsetgen.processing.metadata import DocumentFragment
+import asyncio
+import logging
 
-config = PipelineConfig(
-    input_dir="/data/raw_documents",
-    output_path="/data/output/train.jsonl",
-    ollama_base_url="http://localhost:11434",
-    model_name="llama3.1:70b",
-    max_context_tokens=4096,
-    checkpoint_db="state.db",
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s  %(levelname)-8s  %(message)s",
+    datefmt="%H:%M:%S",
 )
 
-pipeline = PipelineController(config)
-await pipeline.run()          # Resumes from last checkpoint automatically
+
+config = PipelineConfig(
+    input_dir="/home/user/books/",
+    output_path="/home/user/dataset/train.jsonl",
+    llm_backend="openai",
+    ollama_base_url="http://127.0.0.1:8080/v1",
+    model_name="Some_Random_Model_name",
+    max_context_tokens=4096,
+    checkpoint_db="/home/user/checkpoint/state.db",
+)
+
+
+SYSTEM_PROMPT = """You are an expert dataset generator for LLM fine-tuning.
+When given a text excerpt, produce one high-quality training example.
+Return ONLY valid JSON with keys: "instruction", "input", "output".
+No markdown fences, no explanation, no preamble."""
+
+
+def my_prompt_builder(fragment: DocumentFragment) -> str:
+    """Builds the user message for each chunk."""
+    return (
+        f"Generate one instruction-tuning example from this text:\n\n"
+        f"---\n{fragment.text}\n---"
+    )
+
+pipeline = PipelineController(
+    config,
+    system_prompt=SYSTEM_PROMPT,
+    prompt_builder=my_prompt_builder,
+)
+asyncio.run(pipeline.run())          # Resumes from last checkpoint automatically
 ```
 
 ## Recommended Libraries
