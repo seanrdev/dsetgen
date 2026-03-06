@@ -16,10 +16,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterator
 
-from doc2dataset.core.registry import register_ingestor
-from doc2dataset.exceptions import CorruptedFileError
-from doc2dataset.ingestion.abstract_ingestor import AbstractIngestor
-from doc2dataset.processing.metadata import DocumentFragment, FragmentMetadata
+from dsetgen.core.registry import register_ingestor
+from dsetgen.exceptions import CorruptedFileError
+from dsetgen.ingestion.abstract_ingestor import AbstractIngestor
+from dsetgen.processing.metadata import DocumentFragment, FragmentMetadata
 
 logger = logging.getLogger(__name__)
 

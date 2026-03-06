@@ -21,8 +21,8 @@ import os
 from pathlib import Path
 from typing import IO, Iterator
 
-from doc2dataset.config import PipelineConfig
-from doc2dataset.exceptions import (
+from dsetgen.config import PipelineConfig
+from dsetgen.exceptions import (
     EncodingDetectionError,
     FileTooLargeError,
     PathTraversalError,

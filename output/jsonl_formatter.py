@@ -17,9 +17,9 @@ import logging
 from pathlib import Path
 from typing import Any, Dict
 
-from doc2dataset.config import PipelineConfig
-from doc2dataset.core.registry import register_formatter
-from doc2dataset.output.base_formatter import BaseOutputFormatter
+from dsetgen.config import PipelineConfig
+from dsetgen.core.registry import register_formatter
+from dsetgen.output.base_formatter import BaseOutputFormatter
 
 logger = logging.getLogger(__name__)
 

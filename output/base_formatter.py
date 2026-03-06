@@ -15,7 +15,7 @@ from __future__ import annotations
 import abc
 from typing import Any, Dict
 
-from doc2dataset.config import PipelineConfig
+from dsetgen.config import PipelineConfig
 
 
 class BaseOutputFormatter(abc.ABC):

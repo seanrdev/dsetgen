@@ -44,7 +44,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Generator, Optional, Set
 
-from doc2dataset.exceptions import CheckpointError
+from dsetgen.exceptions import CheckpointError
 
 logger = logging.getLogger(__name__)
 

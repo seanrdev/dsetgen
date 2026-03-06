@@ -32,26 +32,26 @@ import time
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional, Type
 
-from doc2dataset.config import PipelineConfig
-from doc2dataset.core.registry import (
+from dsetgen.config import PipelineConfig
+from dsetgen.core.registry import (
     adapter_registry,
     formatter_registry,
     ingestor_registry,
 )
-from doc2dataset.exceptions import (
-    Doc2DatasetError,
+from dsetgen.exceptions import (
+    dsetgenError,
     LLMError,
     LLMRateLimitError,
     LLMTimeoutError,
     UnsupportedFileTypeError,
 )
-from doc2dataset.ingestion.abstract_ingestor import AbstractIngestor
-from doc2dataset.llm.abstract_adapter import AbstractLLMAdapter
-from doc2dataset.output.base_formatter import BaseOutputFormatter
-from doc2dataset.processing.chunker import TokenAwareChunker
-from doc2dataset.processing.metadata import DocumentFragment
-from doc2dataset.processing.normalizer import Normalizer
-from doc2dataset.state.checkpoint import CheckpointManager
+from dsetgen.ingestion.abstract_ingestor import AbstractIngestor
+from dsetgen.llm.abstract_adapter import AbstractLLMAdapter
+from dsetgen.output.base_formatter import BaseOutputFormatter
+from dsetgen.processing.chunker import TokenAwareChunker
+from dsetgen.processing.metadata import DocumentFragment
+from dsetgen.processing.normalizer import Normalizer
+from dsetgen.state.checkpoint import CheckpointManager
 
 logger = logging.getLogger(__name__)
 
@@ -150,7 +150,7 @@ class PipelineController:
             adapter_cls = adapter_registry.get("ollama")
             if adapter_cls is None:
                 # Ensure handlers are imported (triggers registration).
-                import doc2dataset.llm.ollama_adapter  # noqa: F401
+                import dsetgen.llm.ollama_adapter  # noqa: F401
 
                 adapter_cls = adapter_registry.get("ollama")
             assert adapter_cls is not None, "No LLM adapter registered"
@@ -162,8 +162,8 @@ class PipelineController:
         else:
             fmt_cls = formatter_registry.get(config.output_format)
             if fmt_cls is None:
-                import doc2dataset.output.jsonl_formatter  # noqa: F401
-                import doc2dataset.output.huggingface_formatter  # noqa: F401
+                import dsetgen.output.jsonl_formatter  # noqa: F401
+                import dsetgen.output.huggingface_formatter  # noqa: F401
 
                 fmt_cls = formatter_registry.get(config.output_format)
             assert fmt_cls is not None, (
@@ -190,7 +190,7 @@ class PipelineController:
         logger.info("Pipeline starting — config: %s", self._config)
 
         # Ensure handler registrations are loaded.
-        import doc2dataset.ingestion.handlers  # noqa: F401
+        import dsetgen.ingestion.handlers  # noqa: F401
 
         # Boot subsystems.
         self._checkpoint.initialize()

@@ -6,7 +6,7 @@ without hard-coded ``if``/``elif`` chains.
 
 Usage
 -----
->>> from doc2dataset.core.registry import ingestor_registry
+>>> from dsetgen.core.registry import ingestor_registry
 >>> handler_cls = ingestor_registry.get(".pdf")
 >>> handler = handler_cls(config)
 """

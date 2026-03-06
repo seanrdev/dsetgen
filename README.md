@@ -1,9 +1,9 @@
-# Doc2Dataset — Document-to-Dataset Framework
+# dsetgen — Document-to-Dataset Framework
 
 ## Architecture
 
 ```
-doc2dataset/
+dsetgen/
 ├── __init__.py
 ├── config.py                          # Central configuration (dataclasses + env)
 ├── exceptions.py                      # Domain-specific exception hierarchy
@@ -60,8 +60,8 @@ doc2dataset/
 ## Quick Start
 
 ```python
-from doc2dataset.config import PipelineConfig
-from doc2dataset.core.pipeline_controller import PipelineController
+from dsetgen.config import PipelineConfig
+from dsetgen.core.pipeline_controller import PipelineController
 
 config = PipelineConfig(
     input_dir="/data/raw_documents",

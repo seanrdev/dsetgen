@@ -1,4 +1,4 @@
-"""Logging configuration for the Doc2Dataset pipeline.
+"""Logging configuration for the dsetgen pipeline.
 
 Provides a structured JSON logger (via ``structlog`` if available) and
 falls back to stdlib ``logging`` with a clean format otherwise.
@@ -7,7 +7,7 @@ Usage
 -----
 Call ``setup_logging()`` once at startup:
 
->>> from doc2dataset.utils.logging import setup_logging
+>>> from dsetgen.utils.logging import setup_logging
 >>> setup_logging(level="DEBUG")
 """
 

@@ -8,13 +8,13 @@ A structured exception tree lets callers differentiate transient failures
 from __future__ import annotations
 
 
-class Doc2DatasetError(Exception):
+class dsetgenError(Exception):
     """Root exception for every error raised inside the framework."""
 
 
 # ── Ingestion ──────────────────────────────────────────────────────────────
 
-class IngestionError(Doc2DatasetError):
+class IngestionError(dsetgenError):
     """Base for all file-ingestion failures."""
 
 
@@ -40,7 +40,7 @@ class PathTraversalError(IngestionError):
 
 # ── Processing ─────────────────────────────────────────────────────────────
 
-class ProcessingError(Doc2DatasetError):
+class ProcessingError(dsetgenError):
     """Base for normalisation / chunking failures."""
 
 
@@ -50,7 +50,7 @@ class ChunkingError(ProcessingError):
 
 # ── LLM Orchestration ─────────────────────────────────────────────────────
 
-class LLMError(Doc2DatasetError):
+class LLMError(dsetgenError):
     """Base for all LLM-adapter failures."""
 
 
@@ -72,9 +72,9 @@ class LLMMalformedResponseError(LLMError):
 
 # ── Output / State ─────────────────────────────────────────────────────────
 
-class OutputError(Doc2DatasetError):
+class OutputError(dsetgenError):
     """Base for formatter / writer failures."""
 
 
-class CheckpointError(Doc2DatasetError):
+class CheckpointError(dsetgenError):
     """Failed to read or write the checkpoint store."""

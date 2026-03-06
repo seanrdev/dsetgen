@@ -7,11 +7,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterator
 
-from doc2dataset.config import PipelineConfig
-from doc2dataset.core.registry import register_ingestor
-from doc2dataset.ingestion.abstract_ingestor import AbstractIngestor
-from doc2dataset.ingestion.security import stream_lines
-from doc2dataset.processing.metadata import DocumentFragment, FragmentMetadata
+from dsetgen.config import PipelineConfig
+from dsetgen.core.registry import register_ingestor
+from dsetgen.ingestion.abstract_ingestor import AbstractIngestor
+from dsetgen.ingestion.security import stream_lines
+from dsetgen.processing.metadata import DocumentFragment, FragmentMetadata
 
 logger = logging.getLogger(__name__)
 

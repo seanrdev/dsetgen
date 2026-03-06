@@ -1,0 +1,24 @@
+# PDF & OCR
+pdfplumber
+pytesseract
+pdf2image
+
+# Document Parsing
+python-docx
+beautifulsoup4
+lxml
+mistune
+
+# Processing & Tokenization
+tiktoken
+ijson
+
+# Networking & Async
+httpx
+
+# Data & Ecosystem
+datasets
+pyarrow
+
+# Observability
+structlog

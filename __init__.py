@@ -1,4 +1,4 @@
-"""Doc2Dataset — Document-to-Dataset Framework.
+"""dsetgen — Document-to-Dataset Framework.
 
 A modular, fault-tolerant pipeline for ingesting unstructured documents,
 normalizing and chunking text, delegating to a local LLM for dataset

@@ -4,11 +4,11 @@ Design Decisions
 ----------------
 * **Strategy Pattern** — the pipeline holds a reference to
   ``AbstractIngestor`` and delegates to the concrete handler selected at
-  runtime via the :mod:`~doc2dataset.core.registry`.
+  runtime via the :mod:`~dsetgen.core.registry`.
 * **Generator protocol** — ``ingest()`` yields pages/sections lazily so
   that multi-hundred-page PDFs never need to be held in memory at once.
 * **Metadata sidecar** — every yielded text fragment is wrapped in
-  :class:`~doc2dataset.processing.metadata.DocumentFragment` which carries
+  :class:`~dsetgen.processing.metadata.DocumentFragment` which carries
   provenance (source path, page number, byte offset, timestamp).
 """
 
@@ -19,8 +19,8 @@ import logging
 from pathlib import Path
 from typing import Iterator
 
-from doc2dataset.config import PipelineConfig
-from doc2dataset.processing.metadata import DocumentFragment
+from dsetgen.config import PipelineConfig
+from dsetgen.processing.metadata import DocumentFragment
 
 logger = logging.getLogger(__name__)
 
@@ -47,13 +47,13 @@ class AbstractIngestor(abc.ABC):
         Implementations **must**:
 
         1. Validate the file (size, readability) via helpers in
-           :mod:`~doc2dataset.ingestion.security` *before* opening.
+           :mod:`~dsetgen.ingestion.security` *before* opening.
         2. Yield fragments lazily — **never** load an entire file into a
            single string.
         3. Populate :attr:`DocumentFragment.metadata` with at least
            ``source_path`` and ``page_or_section``.
         4. Raise a subclass of
-           :class:`~doc2dataset.exceptions.IngestionError` for
+           :class:`~dsetgen.exceptions.IngestionError` for
            unrecoverable problems (the pipeline will catch it and skip the
            file).
 
@@ -79,7 +79,7 @@ class AbstractIngestor(abc.ABC):
         path traversal).  Override to add format-specific validation (e.g.
         magic-byte sniffing for PDFs).
         """
-        from doc2dataset.ingestion.security import validate_path
+        from dsetgen.ingestion.security import validate_path
 
         validate_path(path, self._config)
 
@@ -91,7 +91,7 @@ class AbstractIngestor(abc.ABC):
         This is the entry-point called by the pipeline controller — it
         wraps exceptions so that a single bad file never kills the batch.
         """
-        from doc2dataset.exceptions import IngestionError
+        from dsetgen.exceptions import IngestionError
 
         try:
             self.pre_validate(path)

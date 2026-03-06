@@ -14,7 +14,7 @@ import re
 import unicodedata
 from typing import Callable, List
 
-from doc2dataset.processing.metadata import DocumentFragment
+from dsetgen.processing.metadata import DocumentFragment
 
 # Type alias for a single transform function.
 TransformFn = Callable[[str], str]

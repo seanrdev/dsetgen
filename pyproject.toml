@@ -44,10 +44,10 @@ logging = [
     "structlog>=23.1",
 ]
 all = [
-    "doc2dataset[pdf,ocr,docx,html,tokens,streaming,huggingface,logging]",
+    "dsetgen[pdf,ocr,docx,html,tokens,streaming,huggingface,logging]",
 ]
 dev = [
-    "doc2dataset[all]",
+    "dsetgen[all]",
     "pytest>=7.4",
     "pytest-asyncio>=0.21",
     "ruff>=0.1",
@@ -55,7 +55,7 @@ dev = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["doc2dataset*"]
+include = ["dsetgen*"]
 
 [tool.ruff]
 line-length = 99

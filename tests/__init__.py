@@ -1,1 +1,1 @@
-"""Test suite for doc2dataset."""
+"""Test suite for dsetgen."""

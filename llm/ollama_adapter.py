@@ -20,15 +20,15 @@ import logging
 import re
 from typing import Any, Dict, Optional
 
-from doc2dataset.config import PipelineConfig
-from doc2dataset.core.registry import register_adapter
-from doc2dataset.exceptions import (
+from dsetgen.config import PipelineConfig
+from dsetgen.core.registry import register_adapter
+from dsetgen.exceptions import (
     LLMConnectionError,
     LLMMalformedResponseError,
     LLMRateLimitError,
     LLMTimeoutError,
 )
-from doc2dataset.llm.abstract_adapter import AbstractLLMAdapter
+from dsetgen.llm.abstract_adapter import AbstractLLMAdapter
 
 logger = logging.getLogger(__name__)
 

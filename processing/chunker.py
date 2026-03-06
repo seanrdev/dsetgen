@@ -27,8 +27,8 @@ import re
 from dataclasses import replace
 from typing import List, Optional
 
-from doc2dataset.config import PipelineConfig
-from doc2dataset.processing.metadata import DocumentFragment
+from dsetgen.config import PipelineConfig
+from dsetgen.processing.metadata import DocumentFragment
 
 logger = logging.getLogger(__name__)
 

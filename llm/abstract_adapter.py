@@ -17,7 +17,7 @@ from __future__ import annotations
 import abc
 from typing import Any, Dict, Optional
 
-from doc2dataset.config import PipelineConfig
+from dsetgen.config import PipelineConfig
 
 
 class AbstractLLMAdapter(abc.ABC):
@@ -47,9 +47,9 @@ class AbstractLLMAdapter(abc.ABC):
 
         Implementations must handle:
 
-        * **Timeouts** → raise :class:`~doc2dataset.exceptions.LLMTimeoutError`
-        * **Connection failures** → raise :class:`~doc2dataset.exceptions.LLMConnectionError`
-        * **Rate-limit signals** → raise :class:`~doc2dataset.exceptions.LLMRateLimitError`
+        * **Timeouts** → raise :class:`~dsetgen.exceptions.LLMTimeoutError`
+        * **Connection failures** → raise :class:`~dsetgen.exceptions.LLMConnectionError`
+        * **Rate-limit signals** → raise :class:`~dsetgen.exceptions.LLMRateLimitError`
 
         The pipeline's retry logic sits above this method.
         """
