@@ -91,3 +91,6 @@ await pipeline.run()          # Resumes from last checkpoint automatically
 | Checkpointing | `sqlite3` (stdlib) | Zero-dependency, ACID-compliant state store |
 | HF output | `datasets` + `pyarrow` | Native Hugging Face ecosystem compatibility |
 | Logging | `structlog` | Structured JSON logs for production observability |
+
+
+Note, the base of this project is not written by me. The base/start of this project is created by AI. If you use this, please review. 
